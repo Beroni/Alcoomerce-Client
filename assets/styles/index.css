@@ -50,6 +50,10 @@ li {
     cursor: pointer;
 }
 
+#root{
+    color: #333333;
+}
+
 .menu-button:hover{
     opacity: .8;
 }
