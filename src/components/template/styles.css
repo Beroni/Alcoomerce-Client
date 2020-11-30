@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+.site-layout-content {
+    min-height: 280px;
+    padding: 24px;
+    background: #fff;
+}
+
+.ant-layout-header{
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent) !important;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.ant-menu{
+    background: transparent !important;
+    color: white !important;
+    border: 0 !important;
+}
+
+.ant-menu-item{
+    margin: 0 2em !important;
+    float: right !important;
+    text-transform: uppercase;
+}
+
+.logo {
+    float: left !important;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.ant-layout-content{
+    font-family: 'Open Sans', sans-serid;
+}
