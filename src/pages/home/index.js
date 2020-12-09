@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Template from "../../components/template";
-import {Carousel, Col, Divider, Row, Space} from "antd";
+import {Carousel, Col, Row, Space, Spin} from "antd";
 import {Slide, SlideImage} from "./styles";
 import Chicote from '../../assets/carousel/tchupish.jpg';
 import BebidaNutella from '../../assets/carousel/nutella.jpg';
@@ -9,8 +9,17 @@ import Title from "antd/es/typography/Title";
 import {Content} from "antd/es/layout/layout";
 import Product from "../../components/product";
 import PImage from '../../assets/tempproduct.jpg';
+import {getList} from "../../services/products";
 
 export default function Home() {
+    const [recommended, setRecommended] = useState();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        getList().then(products => setRecommended(products))
+        setLoading(false)
+    }, [])
+
     return (
         <Template>
             <div>
@@ -31,24 +40,15 @@ export default function Home() {
                     <Title>
                         Recomendado
                     </Title>
-                    <Row gutter={[48, 40]}>
-                        <Col span={6}>
-                            <Product id={12} image={PImage} title={'Tikira'} value={79.53}
-                                     description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
-                        </Col>
-                        <Col span={6}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
-                                     description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
-                        </Col>
-                        <Col span={6}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
-                                     description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
-                        </Col>
-                        <Col span={6}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
-                                     description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
-                        </Col>
-                    </Row>
+                    {loading ? <Spin/> :<Row gutter={[48, 40]}>
+                        {
+                            recommended && recommended.map(product =>
+                                <Col span={6}>
+                                    <Product id={12} {...product}/>
+                                </Col>
+                            )
+                        }
+                    </Row>}
                 </Space>
                 <Space align={'start'} direction={'vertical'}>
                     <Title>
@@ -56,27 +56,27 @@ export default function Home() {
                     </Title>
                     <Row gutter={[48, 40]}>
                         <Col span={4}>
-                            <Product id={12} image={PImage} title={'Tikira'} value={79.53}
+                            <Product id={12} url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                     </Row>
@@ -87,27 +87,27 @@ export default function Home() {
                     </Title>
                     <Row gutter={[48, 40]}>
                         <Col span={4}>
-                            <Product id={12} image={PImage} title={'Tikira'} value={79.53}
+                            <Product id={12} url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                         <Col span={4}>
-                            <Product image={PImage} title={'Tikira'} value={79.53}
+                            <Product url={PImage} name={'Tikira'} price={79.53}
                                      description={'A Tiquira é um destilado de mandioca muito popular no Maranhão. Alguns consideram a Tiquira a verdadeira aguardente brasileira por ser feita da mandioca, uma planta nativa.'}/>
                         </Col>
                     </Row>

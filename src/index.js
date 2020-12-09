@@ -4,12 +4,16 @@ import './global.css';
 import Routes from './routes';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css'
+import {Provider} from 'react-redux';
+import store from './store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Routes />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            <Routes/>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
